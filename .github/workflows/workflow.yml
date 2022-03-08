@@ -1,0 +1,19 @@
+name: Validate and tests
+
+on:
+  push
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Poetry
+        run: pip install poetry
+      - name: Install dependencies
+        run: poetry install
+      - name: Validate with pycodestyle
+        run: poetry run pycodestyle lintersmagic.py
+      - name: Launch tests
+        run: poetry run ipython tests/*.py
