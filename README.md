@@ -17,8 +17,8 @@ Make sure you've got the Python package `pycodestyle`, and this `lintersmagic`.
 ## Through the Databricks interface
 
 - Retrieve the dist:
-  - 0.1.0 wheel 
-  - 0.1.0 tar gz
+  - [0.1.0 wheel](https://github.com/BedrockStreaming/lintersmagic/blob/dist/lintersmagic-0.1.0.tar.gz) 
+  - [0.1.0 tar gz](https://github.com/BedrockStreaming/lintersmagic/blob/dist/lintersmagic-0.1.0-py3-none-any.whl)
 
 - Install it in the libraries of your Databricks cluster
 
@@ -56,6 +56,7 @@ Remember to _avoid_ spaces between declaring multiple errors.
 2. With the option `--max_line_length` or `-m` the max-line-length can be customised.
 
 Example to set the line length to `119` characters instead of the default `79`:
+
 ```
 %pycodestyle_on --max_line_length 119
 ```
@@ -64,7 +65,7 @@ The options can be combined as well.
 
 
 See notebooks in notebook directory for example use cases, as such:
-### Pycodestyle ([notebook](https://github.com/mattijn/pycodestyle_magic/blob/master/notebook/example%20pycodestyle_magic.ipynb))
+### Pycodestyle ([notebook](https://github.com/BedrockStreaming/lintersmagic/blob/main/notebook/examples.ipynb))
 ![alt text](img/pycodestyle.PNG)
 
 ## Contribution
