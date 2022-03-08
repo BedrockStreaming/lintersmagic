@@ -66,7 +66,7 @@ The options can be combined as well.
 
 See notebooks in notebook directory for example use cases, as such:
 ### Pycodestyle ([notebook](https://github.com/BedrockStreaming/lintersmagic/blob/main/notebook/examples.ipynb))
-![alt text](img/pycodestyle.PNG)
+![Notebook examples](img/pycodestyle.png)
 
 ## Contribution
 
