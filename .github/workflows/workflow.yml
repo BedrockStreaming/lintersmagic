@@ -16,6 +16,6 @@ jobs:
       - name: Validate with pycodestyle
         run: poetry run pycodestyle lintersmagic.py
       - name: Validate with black
-        run: poetry run black lintersmagic.py
+        run: poetry run black --check lintersmagic.py
       - name: Launch tests
         run: poetry run ipython tests/*.py
