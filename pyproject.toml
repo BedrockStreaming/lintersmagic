@@ -1,8 +1,9 @@
 [tool.poetry]
 name = "lintersmagic"
-version = "0.1.0"
+version = "0.1.1"
 description = "A package to include linters in Databricks notebooks: pycodestyle"
 authors = ["Bedrock streaming"]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "3.8.10"
