@@ -1,7 +1,7 @@
 # Linters magic
 Magic function for pycodestyle module in Jupyter-Lab or Databricks notebooks.
 
-Current version: 0.1.0
+Current version: 0.1.2
 
 Versions of dependencies:
 - python: 3.8
@@ -12,15 +12,7 @@ Versions of dependencies:
 
 # Installation
 
-Make sure you've got the Python package `pycodestyle`, and this `lintersmagic`.
-
-## Through the Databricks interface
-
-- Retrieve the dist:
-  - [0.1.0 wheel](https://github.com/BedrockStreaming/lintersmagic/blob/dist/lintersmagic-0.1.0.tar.gz) 
-  - [0.1.0 tar gz](https://github.com/BedrockStreaming/lintersmagic/blob/dist/lintersmagic-0.1.0-py3-none-any.whl)
-
-- Install it in the libraries of your Databricks cluster
+pip install lintersmagic
 
 # Usage
 Enable the magic function by using the lintersmagic module in a cell
