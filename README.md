@@ -1,7 +1,7 @@
 # Linters magic
 Magic function for pycodestyle module in Jupyter-Lab or Databricks notebooks.
 
-Current version: 0.1.4
+Current version: 0.1.6
 
 Versions of dependencies:
 - python: 3.8
