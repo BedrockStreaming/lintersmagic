@@ -12,7 +12,9 @@ Versions of dependencies:
 
 # Installation
 
+```
 pip install lintersmagic
+```
 
 # Usage
 Enable the magic function by using the lintersmagic module in a cell
