@@ -78,6 +78,12 @@ To install the dependencies:
 poetry install
 ```
 
+To publish a new version:
+
+```
+poetry publish
+```
+
 ### Tests
 
 ```
