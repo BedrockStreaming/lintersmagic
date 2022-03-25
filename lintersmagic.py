@@ -129,15 +129,18 @@ def pycodestyle(line, cell):
         logging.error("Error: %s - %s." % (e.filename, e.strerror))
     return
 
+
 @register_cell_magic
 def black(line, cell):
     """black cell magic"""
     global init_black
     if not init_black:
-        init_black= True
+        init_black = True
 
     mode = FileMode()
     formatted = format_str(src_contents=cell, mode=mode)
     if f"{cell}\n" != formatted:
-        logging.warning(f"{cell} is well formatted. Instead, you should write {formatted}")
+        logging.warning(
+            f"{cell} is well formatted. Instead, you should write {formatted}"
+        )
     return
