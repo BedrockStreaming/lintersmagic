@@ -14,7 +14,7 @@ jobs:
       - name: Install dependencies
         run: poetry install
       - name: Validate with pycodestyle
-        run: poetry run pycodestyle lintersmagic.py
+        run: poetry run pycodestyle --max-line-length 90 lintersmagic.py
       - name: Validate with black
         run: poetry run black --check lintersmagic.py
       - name: Launch tests

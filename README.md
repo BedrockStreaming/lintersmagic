@@ -1,12 +1,13 @@
 # Linters magic
 Magic function for pycodestyle module in Jupyter-Lab or Databricks notebooks.
 
-Current version: 0.1.6
+Current version: 0.2.0
 
 Versions of dependencies:
 - python: 3.8
 - pycodestyle: 2.8.0
 - ipython: 8.1.1
+- black: 22.1.0
 
 **Note that we've tested it only on Databricks notebooks**
 
@@ -21,12 +22,14 @@ Enable the magic function by using the lintersmagic module in a cell
 
 `%load_ext lintersmagic`
 
-## To check a cell once:
+## Pycodestyle
+
+### To check a cell once :
 use the function as first line in your cell to check compliance with `pycodestyle` as such:
 
 `%%pycodestyle`
 
-## To auto check each cell:
+### To auto check each cell:
 If you want this compliance checking turned on by default for each cell then run this magic line function in an empty cell:
 
 `%pycodestyle_on`
@@ -37,7 +40,7 @@ To turn off the auto-checking for each cell use:
 
 `%pycodestyle_off`
 
-## Config options for `%pycodestyle_on` (version >= 0.5)
+### Config options for `%pycodestyle_on` (version >= 0.5)
 
 1. The option `--ignore` or `-i` will add the the named error(s) to the ignore list
 
@@ -59,10 +62,21 @@ The options can be combined as well.
 
 
 See notebooks in notebook directory for example use cases, as such:
-### Pycodestyle ([notebook](https://github.com/BedrockStreaming/lintersmagic/blob/main/notebook/examples.ipynb))
+### Pycodestyle ([notebook](https://github.com/BedrockStreaming/lintersmagic/blob/main/notebook/examples_pycodestyle.ipynb))
 ![Notebook examples](img/pycodestyle.png)
 
-## Contribution
+## Black
+
+### To check a cell once :
+use the function as first line in your cell to check compliance with `black` as such:
+
+`%%black`
+
+See notebooks in notebook directory for example use cases, as such:
+### Black ([notebook](https://github.com/BedrockStreaming/lintersmagic/blob/main/notebook/examples_black.ipynb))
+![Notebook examples](img/black.png)
+
+# Contribution
 
 ### Dependencies and package
 
