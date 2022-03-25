@@ -141,6 +141,6 @@ def black(line, cell):
     formatted = format_str(src_contents=cell, mode=mode)
     if f"{cell}\n" != formatted:
         logging.warning(
-            f"{cell} is well formatted. Instead, you should write {formatted}"
+            f"{cell} is not well formatted. Instead, you should write {formatted}"
         )
     return

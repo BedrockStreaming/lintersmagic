@@ -35,7 +35,7 @@ class TestLinenumbers(unittest.TestCase):
             black(None, cell)
 
         self.assertEqual(len(captured.records), 1)
-        self.assertEqual(captured.records[0].getMessage(), 'print( "oh look kittens!" ) is well formatted. Instead, you should write print("oh look kittens!")\n')
+        self.assertEqual(captured.records[0].getMessage(), 'print( "oh look kittens!" ) is not well formatted. Instead, you should write print("oh look kittens!")\n')
 
     def test_black_reports_two_lines(self):
         """Test that black reports what it needs to report
@@ -49,7 +49,7 @@ a = "k"
         self.assertEqual(len(captured.records), 1)
         self.assertEqual(captured.records[0].getMessage(), """print( "oh look kittens!" )
 a = "k"
-         is well formatted. Instead, you should write print("oh look kittens!")
+         is not well formatted. Instead, you should write print("oh look kittens!")
 a = "k"
 """)
 
