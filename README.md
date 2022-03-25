@@ -62,7 +62,7 @@ The options can be combined as well.
 
 
 See notebooks in notebook directory for example use cases, as such:
-### Pycodestyle ([notebook](https://github.com/BedrockStreaming/lintersmagic/blob/main/notebook/examples.ipynb))
+### Pycodestyle ([notebook](https://github.com/BedrockStreaming/lintersmagic/blob/main/notebook/examples_pycodestyle.ipynb))
 ![Notebook examples](img/pycodestyle.png)
 
 ## Black
@@ -71,6 +71,10 @@ See notebooks in notebook directory for example use cases, as such:
 use the function as first line in your cell to check compliance with `black` as such:
 
 `%%black`
+
+See notebooks in notebook directory for example use cases, as such:
+### Black ([notebook](https://github.com/BedrockStreaming/lintersmagic/blob/main/notebook/examples_black.ipynb))
+![Notebook examples](img/black.png)
 
 # Contribution
 
