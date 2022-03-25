@@ -102,6 +102,34 @@ report style issues.
             self.assertEqual(captured.records[0].getMessage(), "2:7: E201 whitespace after '('")
             self.assertEqual(captured.records[1].getMessage(), "2:26: E202 whitespace before ')'")
 
+    def test_pycodestyle_off(self):
+        """Test that leading comments lines are skipped when pycodestyle does
+report style issues.
+        """
+        ip = get_ipython()
+        ip.history_manager.reset()
+        with self.assertRaises(AssertionError, msg="no logs of level INFO or higher triggered on root"):
+            with self.assertLogs() as captured:
+                ip.run_cell("%load_ext lintersmagic", store_history=True)
+                ip.run_cell("%pycodestyle_on --max_line_length 150 --ignore E225,E201,E202", store_history=True)
+                ip.run_cell("print( \"oh look kittens!\" )")
+                ip.run_cell(
+                    "a=\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"",
+                    store_history=True)
+                self.assertEqual(len(captured.records), 0)
+                ip.run_cell("%pycodestyle_off", store_history=True)
+
+        with self.assertLogs() as captured:
+            ip.run_cell("%pycodestyle_on --max_line_length 50", store_history=True)
+            ip.run_cell("print( \"oh look kittens!\" )")
+            ip.run_cell(
+                "a = \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"",
+                store_history=True)
+            self.assertEqual(len(captured.records), 3)
+            self.assertEqual(captured.records[0].getMessage(), "2:7: E201 whitespace after '('")
+            self.assertEqual(captured.records[1].getMessage(), "2:26: E202 whitespace before ')'")
+            self.assertEqual(captured.records[2].getMessage(), "2:51: E501 line too long (92 > 50 characters)")
+
 
 if __name__ == '__main__':
     unittest.main()

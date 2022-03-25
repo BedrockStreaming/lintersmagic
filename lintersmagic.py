@@ -81,6 +81,10 @@ def pycodestyle_on(line):
 
 @register_line_magic
 def pycodestyle_off(line):
+    global ignore_codes
+    global max_line_length
+    ignore_codes = []
+    max_line_length = 79
     unload_ipython_extension(vw.shell, pck="pycodestyle")
 
 
