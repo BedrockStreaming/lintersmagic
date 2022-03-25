@@ -2,7 +2,7 @@
 Run under IPython with `ipython tests/test_.*py`.
 """
 import unittest
-from lintersmagic import pycodestyle
+from lintersmagic import pycodestyle, black
 
 class TestLinenumbers(unittest.TestCase):
 
@@ -17,6 +17,41 @@ class TestLinenumbers(unittest.TestCase):
         self.assertEqual(len(captured.records), 2)  # check that there is only one log message
         self.assertEqual(captured.records[0].getMessage(), "2:7: E201 whitespace after '('")
         self.assertEqual(captured.records[1].getMessage(), "2:26: E202 whitespace before ')'")
+
+    def test_black_doesnt_report(self):
+        """Test that black reports what it needs to report
+        """
+        cell = '''print("oh look kittens!")'''
+
+        with self.assertRaises(AssertionError, msg="no logs of level INFO or higher triggered on root"):
+            with self.assertLogs():
+                black(None, cell)
+
+    def test_black_reports(self):
+        """Test that black reports what it needs to report
+        """
+        cell = '''print( "oh look kittens!" )'''
+        with self.assertLogs() as captured:
+            black(None, cell)
+
+        self.assertEqual(len(captured.records), 1)
+        self.assertEqual(captured.records[0].getMessage(), 'print( "oh look kittens!" ) is well formatted. Instead, you should write print("oh look kittens!")\n')
+
+    def test_black_reports_two_lines(self):
+        """Test that black reports what it needs to report
+        """
+        cell = """print( "oh look kittens!" )
+a = "k"
+        """
+        with self.assertLogs() as captured:
+            black(None, cell)
+
+        self.assertEqual(len(captured.records), 1)
+        self.assertEqual(captured.records[0].getMessage(), """print( "oh look kittens!" )
+a = "k"
+         is well formatted. Instead, you should write print("oh look kittens!")
+a = "k"
+""")
 
     def test_pycodestyle_reports_correct_linenumber_with_leading_empty_lines(self):
         """Test that pycodestyle reports the correct line numbers when there

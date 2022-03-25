@@ -13,6 +13,7 @@ import io
 import os
 import logging
 import pycodestyle as pycodestyle_module
+from black import FileMode, format_str
 
 from IPython.core.magic import register_cell_magic
 from IPython.core.magic import register_line_magic
@@ -20,6 +21,7 @@ from IPython.core import magic_arguments
 
 vw = None
 init_pycodestyle = False
+init_black = False
 ignore_codes = []
 max_line_length = 79
 
@@ -121,4 +123,17 @@ def pycodestyle(line, cell):
         os.remove(file.name)
     except OSError as e:
         logging.error("Error: %s - %s." % (e.filename, e.strerror))
+    return
+
+@register_cell_magic
+def black(line, cell):
+    """black cell magic"""
+    global init_black
+    if not init_black:
+        init_black= True
+
+    mode = FileMode()
+    formatted = format_str(src_contents=cell, mode=mode)
+    if f"{cell}\n" != formatted:
+        logging.warning(f"{cell} is well formatted. Instead, you should write {formatted}")
     return
